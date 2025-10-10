@@ -3,6 +3,7 @@ package com.example.actividad_04
 import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -118,7 +119,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateIMC(){
-        val imc = currentWeight/(currentHeight * currentHeight)
+        val df = DecimalFormat("#.##")
+        val imc = currentWeight/(currentHeight.toDouble()/100 * currentHeight.toDouble()/100)
+        val result = df.format(imc).toDouble()
+        Log.i("IMCJordi", "El IMC es $imc")
     }
 
     private fun setAge(){
