@@ -7,4 +7,5 @@
     <color name= "blue">#170633</color>
     <color name= "colorPredeterminado">#2F125C</color>
     <color name = "colorSelecionado">#270E4D</color>
+    <color name="background_FAB">#FF6200EE</color>
 </resources>
