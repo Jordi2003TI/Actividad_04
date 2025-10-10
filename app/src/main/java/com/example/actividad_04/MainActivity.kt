@@ -11,18 +11,38 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.RangeSlider
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var botonInici: Button
+    private var currentWeight: Int = 60
+    private var currentAge: Int = 18
+
+    private var currentHeight:Int = 120
 
     private var isMaleSelected:Boolean= true;
     private var isFemaleSelected:Boolean= false;
 
-
+    // para poder elegir entre los generos
     private lateinit var viewMale: CardView
     private lateinit var viewFemale: CardView
+
+    // para poder sumar y restar a weight
+    private lateinit var btnSubractWeigh: FloatingActionButton
+    private lateinit var btnPlusWeight: FloatingActionButton
+    private lateinit var tvWeigh: TextView
+
+    // para poder sumar la EDAD
+    private lateinit var btnSubtractAge: FloatingActionButton
+    private lateinit var btnPlusAge: FloatingActionButton
+    private  lateinit var tvAge: TextView
+
+    //BOTON
+    private lateinit var btnCalculate: Button
+
 
 // para el slider, ponemos de lo que queremos enlazar del mismo tipo de la id
     private lateinit var tvHeight: TextView
@@ -41,6 +61,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         setGender()
+        setWeight()
+        setAge()
     }
 
     // Usamos este modulo para que podamos encontrar el elemento mediante la id y poder
@@ -50,6 +72,13 @@ class MainActivity : AppCompatActivity() {
         viewFemale = findViewById(R.id.cvFemale)
         tvHeight = findViewById(R.id.tvHeight)
         rsHeight = findViewById(R.id.rsHeight)
+        btnSubractWeigh = findViewById(R.id.btnSubractWeigh)
+        btnPlusWeight = findViewById(R.id.btnPlusWeight)
+        tvWeigh = findViewById(R.id.tvWeigh)
+        btnSubtractAge = findViewById(R.id.btnSubtractAge)
+        btnPlusAge = findViewById(R.id.btnPlusAge)
+        tvAge = findViewById(R.id.tvAge)
+        btnCalculate = findViewById(R.id.btnCalculate)
 
     }
 
@@ -64,10 +93,42 @@ class MainActivity : AppCompatActivity() {
         }
         rsHeight.addOnChangeListener { _, value, _ ->
             val df = DecimalFormat("#.##")
-            val result = df.format(value)
-            tvHeight.text = "$result cm"
+            currentHeight = df.format(value).toInt()
+            tvHeight.text = "$currentHeight cm"
+        }
+        btnSubractWeigh.setOnClickListener {
+            currentWeight--
+            setWeight()
+        }
+        btnPlusWeight.setOnClickListener {
+            currentWeight++
+            setWeight()
+        }
+        btnSubtractAge.setOnClickListener {
+            currentAge--
+            setAge()
+        }
+        btnPlusAge.setOnClickListener {
+            currentAge++
+            setAge()
+        }
+        btnCalculate.setOnClickListener {
+            calculateIMC()
         }
     }
+
+    private fun calculateIMC(){
+        val imc = currentWeight/(currentHeight * currentHeight)
+    }
+
+    private fun setAge(){
+        tvAge.text = currentAge.toString()
+    }
+
+    private fun setWeight(){
+        tvWeigh.text = currentWeight.toString()
+    }
+
     private fun changeGnder(){
         isMaleSelected = !isMaleSelected
         isFemaleSelected = !isFemaleSelected

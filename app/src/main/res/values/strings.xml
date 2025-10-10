@@ -5,4 +5,6 @@
     <string name="dona">dona</string>
     <string name="altura">Altura</string>
     <string name="weight">Peso</string>
+    <string name="age">Edad</string>
+    <string name="calculate">Calcular</string>
 </resources>
