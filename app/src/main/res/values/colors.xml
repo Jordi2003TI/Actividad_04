@@ -8,4 +8,10 @@
     <color name= "colorPredeterminado">#2F125C</color>
     <color name = "colorSelecionado">#270E4D</color>
     <color name="background_FAB">#FF6200EE</color>
+
+    <color name="pesoBajo">#FFEB3B</color>
+    <color name="pesoMediano">#4CAF50</color>
+    <color name="pesoSobrePeso">#F44336</color>
+    <color name="pesoObesidad">#E91E63</color>
+
 </resources>

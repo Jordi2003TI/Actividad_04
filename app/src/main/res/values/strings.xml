@@ -7,4 +7,21 @@
     <string name="weight">Peso</string>
     <string name="age">Edad</string>
     <string name="calculate">Calcular</string>
+    <string name="result">Resultado</string>
+    <string name="recalculate">re-Calcular</string>
+
+    <string name="error">Error</string>
+
+    <string name="titleBajoPeso">Peso Bajo</string>
+    <string name="descriptiocionBajoPeso">Estas por debajo del peso y tu altura</string>
+
+    <string name="titleMedioPeso">Peso Mediano</string>
+    <string name="descriptiocionMedioPeso">Estas genial fantastico</string>
+
+    <string name="titleSobrePeso">Sobre Peso</string>
+    <string name="descriptiocionSobrePeso">Tienes sobrepeso para tu altura y estatura</string>
+
+    <string name="titleObesidad">Obesidad</string>
+    <string name="descriptiocionObesidad">Tienes obesidad para tu altura y estatura</string>
+
 </resources>

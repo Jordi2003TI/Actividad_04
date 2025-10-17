@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvHeight: TextView
     private lateinit var rsHeight: RangeSlider
 
+    companion object{
+        const val  IMC_KEY = "IMC_RESULT"
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,15 +118,23 @@ class MainActivity : AppCompatActivity() {
             setAge()
         }
         btnCalculate.setOnClickListener {
-            calculateIMC()
+            var result = calculateIMC()
+            navigatetoResult(result)
         }
     }
 
-    private fun calculateIMC(){
+    private fun navigatetoResult(result: Double){
+        val intent = Intent(this, ResultIMC::class.java)
+        intent.putExtra(IMC_KEY, result)
+        startActivity(intent)
+
+    }
+
+    private fun calculateIMC(): Double{
         val df = DecimalFormat("#.##")
         val imc = currentWeight/(currentHeight.toDouble()/100 * currentHeight.toDouble()/100)
-        val result = df.format(imc).toDouble()
-        Log.i("IMCJordi", "El IMC es $imc")
+        return df.format(imc).toDouble()
+
     }
 
     private fun setAge(){
